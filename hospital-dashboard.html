@@ -4,20 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hospital Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+	 <header>
+    <div class="header-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#4CAF50" stroke="#009688" stroke-width="4"/>
+        <rect x="28" y="12" width="8" height="40" fill="#fff"/>
+        <rect x="12" y="28" width="40" height="8" fill="#fff"/>
+      </svg>
+      <span class="hospital-name">Hospital Care</span>
+    </div>
+    <div class="header-right">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="register.html" class="nav-btn">Register</a>
+      <a href="signin.html" class="nav-btn">Sign in</a>
+      <a href="account.html" class="nav-btn">Account</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </header>
+  <div class="form-section">
   <h2>Hospital Dashboard</h2>
   <p>Update Bed Availability:</p>
 
-  <form id="bedForm">
-    <label for="bedsAvailable">Available Beds:</label>
-    <input type="number" id="bedsAvailable" required />
+  <form id="bedForm" >
+    <label class="bedsAvailable">Available Beds:</label>
+    <input type="number"  class="beds" placeholder="ICU beds" required />
+    <input type="number"  class="beds" placeholder="Ventileted beds" required />
+    <input type="number" class="beds" placeholder="Normal beds" required />
     <button type="submit">Update</button>
   </form>
 
   <div id="updateMessage"></div>
-
+</div>
   <script>
     const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
     if (!loggedIn || loggedIn.role !== "hospital") {
@@ -26,7 +47,7 @@
 
     document.getElementById("bedForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      const beds = document.getElementById("bedsAvailable").value;
+      const beds = document.querySelector(".bedsAvailable").value;
 
       loggedIn.beds = beds;
       localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
@@ -40,3 +61,6 @@
   </script>
 </body>
 </html>
+
+
+ 
