@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Care</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: linear-gradient(90deg, #1565c0, #0288d1);
+      color: white;
+    }
+
+    .hospital-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-btn {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .nav-btn:hover {
+      color: #FFD700;
+    }
+
+    .hospital-list {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1565c0;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#4CAF50" stroke="#009688" stroke-width="4" />
+        <rect x="28" y="12" width="8" height="40" fill="#fff" />
+        <rect x="12" y="28" width="40" height="8" fill="#fff" />
+      </svg>
+      <span class="hospital-name">Hospital Care</span>
+    </div>
+    <div class="header-right">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="register.html" class="nav-btn">Register</a>
+      <a href="signin.html" class="nav-btn">Sign in</a>
+      <a href="account.html" class="nav-btn">Account</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </header>
+
+  <section class="hospital-list">
+    <h2>Welcome to Hospital Care</h2>
+    <p>Please use the navigation above to explore our services or register/sign in.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hospital Care. All rights reserved.</p>
+  </footer>
+</body>
+</html>

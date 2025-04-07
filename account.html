@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account - Our Hospital</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#4CAF50" stroke="#009688" stroke-width="4"/>
+        <rect x="28" y="12" width="8" height="40" fill="#fff"/>
+        <rect x="12" y="28" width="40" height="8" fill="#fff"/>
+      </svg>
+      <span class="hospital-name">Hospital Care</span>
+    </div>
+    <div class="header-right">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="register.html" class="nav-btn">Register</a>
+      <a href="signin.html" class="nav-btn">Sign in</a>
+      <a href="account.html" class="nav-btn">Account</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </header>
+  
+  <section class="account-section">
+    <h2>Your Account</h2>
+    <div id="accountInfo"></div>
+  </section>
+  
+  <script>
+    function loadAccountFromLocalStorage() {
+      const user = JSON.parse(localStorage.getItem("registeredUser"));
+      const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+  
+      if (!user || !loggedIn || user.email !== loggedIn.email) {
+        window.location.href = "signin.html";
+        return;
+      }
+  
+      document.getElementById("accountInfo").innerHTML = `
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Mobile:</strong> ${user.mobile}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>Age:</strong> ${user.age}</p>
+        <p><strong>Illness:</strong> ${user.illness}</p>
+        <p><strong>Role:</strong> ${loggedIn.role}</p>
+      `;
+    }
+  
+    loadAccountFromLocalStorage();
+  </script>
+</body>
+</html>

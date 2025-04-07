@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Our Hospital</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#4CAF50" stroke="#009688" stroke-width="4" />
+        <rect x="28" y="12" width="8" height="40" fill="#fff" />
+        <rect x="12" y="28" width="40" height="8" fill="#fff" />
+      </svg>
+      <span class="hospital-name">Our Hospital</span>
+    </div>
+    <div class="header-right">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="register.html" class="nav-btn">Register</a>
+      <a href="signin.html" class="nav-btn">Sign in</a>
+      <a href="account.html" class="nav-btn">Account</a>
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </div>
+  </header>
+
+  <section class="contact-hero">
+    <div class="contact-hero-image">
+      <img src="https://source.unsplash.com/1600x900/?hospital,contact" alt="Contact Our Hospital" />
+    </div>
+    <div class="contact-hero-text">
+      <h1>Contact Us</h1>
+      <p>
+        We are here to help you. Whether you need to schedule an appointment, have
+        inquiries, or require assistance, please get in touch.
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-details">
+    <div class="contact-info">
+      <h2>Our Contact Information</h2>
+      <p><strong>Address:</strong> 1234 Health Ave, Wellness City, State</p>
+      <p><strong>Phone:</strong> (123) 456-7890</p>
+      <p><strong>Email:</strong> info@ourhospital.com</p>
+      <p><strong>Working Hours:</strong> Mon - Fri: 8 AM - 6 PM</p>
+    </div>
+    <div class="contact-form-container">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm">
+        <label for="contactName">Name:</label>
+        <input type="text" id="contactName" name="contactName" required />
+        
+        <label for="contactEmail">Email:</label>
+        <input type="email" id="contactEmail" name="contactEmail" required />
+        
+        <label for="contactMessage">Message:</label>
+        <textarea id="contactMessage" name="contactMessage" rows="5" required></textarea>
+        
+        <button type="submit">Submit</button>
+      </form>
+      <div id="contactResponse"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Our Hospital. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const formData = {
+        name: document.getElementById("contactName").value,
+        email: document.getElementById("contactEmail").value,
+        message: document.getElementById("contactMessage").value,
+      };
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const data = await res.json();
+        const respDiv = document.getElementById("contactResponse");
+        if (data.success) {
+          respDiv.textContent = data.message;
+          respDiv.style.color = "#4CAF50";
+          document.getElementById("contactForm").reset();
+        } else {
+          respDiv.textContent = data.error || "Message sending failed";
+          respDiv.style.color = "#f44336";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    });
+  </script>
+</body>
+</html>

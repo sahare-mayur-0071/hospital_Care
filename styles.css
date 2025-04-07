@@ -1,0 +1,744 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eceff1;
+    color: #37474f;
+  }
+  
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1565c0, #0288d1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .hospital-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .header-right .nav-btn {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid transparent;
+  }
+  
+  .header-right .nav-btn:hover {
+    background-color: #ffca28;
+    color: #37474f;
+    border-color: #ffab00;
+  }
+  
+  /* Hero Section (Home Page) */
+  .hero {
+    margin-top: 70px; /* to clear fixed header */
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #ffeb3b, #ff5722);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+  }
+  
+  .hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #1a237e;
+  }
+  
+  .hero-text p {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4e342e;
+  }
+  
+  .hero-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Form & Account Sections */
+  .form-section,
+  .account-section {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 100px auto 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .form-section h2,
+  .account-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0d47a1;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-section label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #37474f;
+  }
+  
+  .form-section input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #90a4ae;
+    border-radius: 4px;
+  }
+  
+  .form-section button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #43a047;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-section button:hover {
+    background-color: #388e3c;
+  }
+  
+  /* Account Info Text */
+  .account-section p {
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5em;
+    }
+    
+    .hero-text p {
+      font-size: 1.2em;
+    }
+  }
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eceff1;
+    color: #37474f;
+  }
+  
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1565c0, #0288d1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .hospital-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .header-right .nav-btn {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid transparent;
+  }
+  
+  .header-right .nav-btn:hover {
+    background-color: #ffca28;
+    color: #37474f;
+    border-color: #ffab00;
+  }
+  
+  /* Hero Section (Home Page) */
+  .hero {
+    margin-top: 70px; /* to clear fixed header */
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #ffeb3b, #ff5722);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+  }
+  
+  .hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #1a237e;
+  }
+  
+  .hero-text p {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4e342e;
+  }
+  
+  .hero-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Form & Account Sections */
+  .form-section,
+  .account-section {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 100px auto 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .form-section h2,
+  .account-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0d47a1;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-section label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #37474f;
+  }
+  
+  .form-section input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #90a4ae;
+    border-radius: 4px;
+  }
+  
+  .form-section button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #43a047;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-section button:hover {
+    background-color: #388e3c;
+  }
+  
+  /* Account Info Text */
+  .account-section p {
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5em;
+    }
+    
+    .hero-text p {
+      font-size: 1.2em;
+    }
+  }
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eceff1;
+    color: #37474f;
+  }
+  
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1565c0, #0288d1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .hospital-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .header-right .nav-btn {
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid transparent;
+  }
+  
+  .header-right .nav-btn:hover {
+    background-color: #ffca28;
+    color: #37474f;
+    border-color: #ffab00;
+  }
+  
+  /* Hero Section (Home Page) */
+  .hero {
+    margin-top: 70px; /* to clear fixed header */
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #ffeb3b, #ff5722);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+  }
+  
+  .hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #1a237e;
+  }
+  
+  .hero-text p {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4e342e;
+  }
+  
+  .hero-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Form & Account Sections */
+  .form-section,
+  .account-section {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 100px auto 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .form-section h2,
+  .account-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0d47a1;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-section label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #37474f;
+  }
+  
+  .form-section input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #90a4ae;
+    border-radius: 4px;
+  }
+  
+  .form-section button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #43a047;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-section button:hover {
+    background-color: #388e3c;
+  }
+  
+  /* Account Info Text */
+  .account-section p {
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5em;
+    }
+    
+    .hero-text p {
+      font-size: 1.2em;
+    }
+  }
+/* ===== About Page Additional Styles ===== */
+.about-hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: linear-gradient(135deg, #ffcc80, #ffab91);
+    padding: 40px 20px;
+  }
+  .about-hero-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+  }
+  .about-hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .about-hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    color: #3e2723;
+  }
+  .about-hero-text h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+  }
+  .about-hero-text p {
+    font-size: 1.2em;
+  }
+  .about-details {
+    background-color: #fff;
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .about-details h2 {
+    color: #1a237e;
+    margin-bottom: 10px;
+  }
+  .about-details p,
+  .about-details ul {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #424242;
+  }
+  .about-details ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  .team-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .team-member {
+    background: #e0f7fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 250px;
+  }
+  .team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+  }
+  
+  /* ===== Contact Page Additional Styles ===== */
+  .contact-hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: linear-gradient(135deg, #b3e5fc, #81d4fa);
+    padding: 40px 20px;
+  }
+  .contact-hero-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+  }
+  .contact-hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .contact-hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    color: #01579b;
+  }
+  .contact-hero-text h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+  }
+  .contact-hero-text p {
+    font-size: 1.2em;
+  }
+  .contact-details {
+    background-color: #fff;
+    padding: 40px 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  .contact-info {
+    flex: 1;
+    min-width: 300px;
+    color: #37474f;
+    font-size: 1.1em;
+  }
+  .contact-info h2 {
+    color: #0d47a1;
+    margin-bottom: 10px;
+  }
+  .contact-form-container {
+    flex: 1;
+    min-width: 300px;
+  }
+  .contact-form-container h2 {
+    color: #0d47a1;
+    margin-bottom: 10px;
+  }
+  .contact-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-form-container form label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .contact-form-container form input,
+  .contact-form-container form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #90a4ae;
+    border-radius: 4px;
+  }
+  .contact-form-container form button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #43a047;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .contact-form-container form button:hover {
+    background-color: #388e3c;
+  }
+  
+  /* ===== Footer (if not already styled) ===== */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0288d1;
+    color: #fff;
+    margin-top: 40px;
+  }
+        
+  .hospital-details-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
