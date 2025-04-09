@@ -54,33 +54,53 @@
   </section>
   
   <script>
-    document.getElementById("registerForm").addEventListener("submit", function (e) {
-      e.preventDefault();
 
-      const name = document.getElementById("name").value;
-      const mobile = document.getElementById("mobile").value;
-      const email = document.getElementById("email").value;
-      const age = document.getElementById("age").value;
-      const illness = document.getElementById("illness").value;
-      const password = document.getElementById("password").value;
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const userData = {
-        name,
-        mobile,
-        email,
-        age,
-        illness,
-        password
-      };
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+    const email = document.getElementById("email").value;
+    const age = document.getElementById("age").value;
+    const illness = document.getElementById("illness").value;
+    const password = document.getElementById("password").value;
 
-      localStorage.setItem("registeredUser", JSON.stringify(userData));
+    const newUser = {
+      name,
+      mobile,
+      email: email.trim().toLowerCase(),
+      age,
+      illness,
+      password,
+      role: "patient"
+    };
 
-      alert("Registered successfully!");
+    // Fetch old users or create empty array
+    let users = JSON.parse(localStorage.getItem("registeredUser")) || [];
 
-      setTimeout(() => {
-        window.location.href = "signin.html";
-      }, 1000);
-    });
+    // If not already an array (bug fix)
+    if (!Array.isArray(users)) {
+      users = [users];
+    }
+
+    // Optional: Check if user already exists
+    const exists = users.find(u => u.email === newUser.email);
+    if (exists) {
+      alert("This email is already registered!");
+      return;
+    }
+
+    users.push(newUser);
+    localStorage.setItem("registeredUser", JSON.stringify(users));
+
+    alert("Registered successfully!");
+
+    setTimeout(() => {
+      window.location.href = "signin.html";
+    }, 1000);
+  });
+
+
   </script>
 
 </body>
