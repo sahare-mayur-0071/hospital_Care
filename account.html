@@ -1,10 +1,21 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Account - Our Hospital</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+	  .but{
+  position:relative; 
+  left:30vh; 
+  height:40px; 
+  width:50%; 
+  color:#346189; 
+  border-radius:10px;
+  font-weight: 600;
+  border:none}
+  </style>
 </head>
 <body>
   <header>
@@ -29,29 +40,49 @@
   <section class="account-section">
     <h2>Your Account</h2>
     <div id="accountInfo"></div>
-  </section>
+
   
-  <script>
-    function loadAccountFromLocalStorage() {
-      const user = JSON.parse(localStorage.getItem("registeredUser"));
-      const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
-  
-      if (!user || !loggedIn || user.email !== loggedIn.email) {
-        window.location.href = "signin.html";
-        return;
-      }
-  
-      document.getElementById("accountInfo").innerHTML = `
-        <p><strong>Name:</strong> ${user.name}</p>
-        <p><strong>Mobile:</strong> ${user.mobile}</p>
-        <p><strong>Email:</strong> ${user.email}</p>
-        <p><strong>Age:</strong> ${user.age}</p>
-        <p><strong>Illness:</strong> ${user.illness}</p>
-        <p><strong>Role:</strong> ${loggedIn.role}</p>
-      `;
+  <button  class="but"  onclick="logout()" >Logout</button>
+</section>
+<script>
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "signin.html";
+  }
+
+  function loadAccountFromLocalStorage() {
+    const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (!loggedIn) {
+      // Redirect if not signed in
+      window.location.href = "signin.html";
+      return;
     }
-  
-    loadAccountFromLocalStorage();
-  </script>
+
+    // Display info based on role
+    let html = `
+      <p><strong>Name:</strong> ${loggedIn.name}</p>
+      <p><strong>Email:</strong> ${loggedIn.email}</p>
+      <p><strong>Role:</strong> ${loggedIn.role}</p>
+    `;
+
+    if (loggedIn.role === "patient") {
+      html += `
+        <p><strong>Mobile:</strong> ${loggedIn.mobile}</p>
+        <p><strong>Age:</strong> ${loggedIn.age}</p>
+        <p><strong>Illness:</strong> ${loggedIn.illness}</p>
+      `;
+    } else if (loggedIn.role === "hospital") {
+      html += `<p><strong>ICU Bed Availability:</strong> ${loggedIn.beds.icubeds}</p>`;
+      html += `<p><strong>Ventiled Bed Availability:</strong> ${loggedIn.beds.ventiletedbeds}</p>`;
+      html += `<p><strong>Normal Bed Availability:</strong> ${loggedIn.beds.normalbeds}</p>`;
+    }
+
+    document.getElementById("accountInfo").innerHTML = html;
+  }
+
+  loadAccountFromLocalStorage();
+</script>
+
 </body>
 </html>
