@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign In - Hospital Care</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -37,77 +37,92 @@
       </select>
       
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required />
       
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" id="password" name="password" required />
       
       <button type="submit">Sign In</button>
     </form>
     <div id="signinMessage"></div>
   </section>
 
-  <script>
-    const predefinedHospitals = [
-      {
-        name: "Namco Hospital",
-        email: "namco@hospital.com",
-        password: "namco123",
-        role: "hospital",
-        beds: 0
-      },
-      {
-        name: "Sahyadri Hospital",
-        email: "sahyadri@hospital.com",
-        password: "sahyadri123",
-        role: "hospital",
-        beds: 0
-      }, {
-        name: "civil Hospital",
-        email: "civil@hospital.com",
-        password: "civil123",
-        role: "hospital",
-        beds: 0
-      }
-    ];
+ <script>
+  const predefinedHospitals = [
+    {
+      name: "Namco Hospital",
+      email: "namco@hospital.com",
+      password: "namco123",
+      role: "hospital",
+      beds: 0
+    },
+    {
+      name: "Sahyadri Hospital",
+      email: "sahyadri@hospital.com",
+      password: "sahyadri123",
+      role: "hospital",
+      beds: 0
+    },
+    {
+      name: "SMBT Hospital",
+      email: "smbt@hospital.com",
+      password: "smbt123",
+      role: "hospital",
+      beds: 0
+    }
+  ];
+
+ 
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+ 
+  predefinedHospitals.forEach(hospital => {
+    if (!users.find(u => u.email === hospital.email)) {
+      users.push(hospital);
+    }
+  });
+
+  
+  const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
+  if (registeredUser && !users.find(u => u.email === registeredUser.email)) {
+    registeredUser.role = "patient"; // Ensure the role is added
+    users.push(registeredUser);
+  }
+
+  
+  localStorage.setItem("users", JSON.stringify(users));
+
+  
+  document.getElementById("signinForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const role = document.getElementById("role").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    predefinedHospitals.forEach(hospital => {
-      if (!users.find(u => u.email === hospital.email)) {
-        users.push(hospital);
-      }
-    });
-    localStorage.setItem("users", JSON.stringify(users));
+    const user = users.find(u => u.email === email && u.password === password && u.role === role);
 
-    document.getElementById("signinForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+    const messageDiv = document.getElementById("signinMessage");
 
-      const role = document.getElementById("role").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+    if (user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      messageDiv.textContent = "Sign in successful!";
+      messageDiv.style.color = "green";
 
-      const user = users.find(u => u.email === email && u.password === password && u.role === role);
-      const messageDiv = document.getElementById("signinMessage");
+      setTimeout(() => {
+        window.location.href = (role === "hospital") ? "hospital-dashboard.html" : "account.html";
+      }, 1000);
+    } else {
+      messageDiv.textContent = "Invalid credentials!";
+      messageDiv.style.color = "red";
+    }
+  });
+</script>
 
-      if (user) {
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-        messageDiv.textContent = "Sign in successful!";
-        messageDiv.style.color = "green";
 
-        setTimeout(() => {
-          if (role === "hospital") {
-            window.location.href = "hospital-dashboard.html";
-          } else {
-            window.location.href = "account.html";
-          }
-        }, 1000);
-      } else {
-        messageDiv.textContent = "Invalid credentials!";
-        messageDiv.style.color = "red";
-      }
-    });
-  </script>
+
 
 </body>
 </html>
+
