@@ -1,744 +1,857 @@
-/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eceff1;
-    color: #37474f;
-  }
-  
-  /* Header */
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #1565c0, #0288d1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .header-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .hospital-name {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .header-right .nav-btn {
-    margin-left: 15px;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-    color: #ffffff;
-    background-color: transparent;
-    border: 2px solid transparent;
-  }
-  
-  .header-right .nav-btn:hover {
-    background-color: #ffca28;
-    color: #37474f;
-    border-color: #ffab00;
-  }
-  
-  /* Hero Section (Home Page) */
-  .hero {
-    margin-top: 70px; /* to clear fixed header */
-    min-height: calc(100vh - 70px);
-    background: linear-gradient(135deg, #ffeb3b, #ff5722);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-  }
-  
-  .hero-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    width: 100%;
-  }
-  
-  .hero-text {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-  }
-  
-  .hero-text h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #1a237e;
-  }
-  
-  .hero-text p {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #4e342e;
-  }
-  
-  .hero-image {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-  
-  /* Form & Account Sections */
-  .form-section,
-  .account-section {
-    background-color: #ffffff;
-    max-width: 500px;
-    margin: 100px auto 40px auto;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .form-section h2,
-  .account-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0d47a1;
-  }
-  
-  .form-section form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-section label {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #37474f;
-  }
-  
-  .form-section input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #90a4ae;
-    border-radius: 4px;
-  }
-  
-  .form-section button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #43a047;
-    color: #ffffff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .form-section button:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Account Info Text */
-  .account-section p {
-    margin: 10px 0;
-    font-size: 1.1em;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .hero-content {
-      flex-direction: column;
-    }
-    
-    .hero-text h1 {
-      font-size: 2.5em;
-    }
-    
-    .hero-text p {
-      font-size: 1.2em;
-    }
-  }
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eceff1;
-    color: #37474f;
-  }
-  
-  /* Header */
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #1565c0, #0288d1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .header-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .hospital-name {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .header-right .nav-btn {
-    margin-left: 15px;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-    color: #ffffff;
-    background-color: transparent;
-    border: 2px solid transparent;
-  }
-  
-  .header-right .nav-btn:hover {
-    background-color: #ffca28;
-    color: #37474f;
-    border-color: #ffab00;
-  }
-  
-  /* Hero Section (Home Page) */
-  .hero {
-    margin-top: 70px; /* to clear fixed header */
-    min-height: calc(100vh - 70px);
-    background: linear-gradient(135deg, #ffeb3b, #ff5722);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-  }
-  
-  .hero-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    width: 100%;
-  }
-  
-  .hero-text {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-  }
-  
-  .hero-text h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #1a237e;
-  }
-  
-  .hero-text p {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #4e342e;
-  }
-  
-  .hero-image {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-  
-  /* Form & Account Sections */
-  .form-section,
-  .account-section {
-    background-color: #ffffff;
-    max-width: 500px;
-    margin: 100px auto 40px auto;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .form-section h2,
-  .account-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0d47a1;
-  }
-  
-  .form-section form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-section label {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #37474f;
-  }
-  
-  .form-section input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #90a4ae;
-    border-radius: 4px;
-  }
-  
-  .form-section button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #43a047;
-    color: #ffffff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .form-section button:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Account Info Text */
-  .account-section p {
-    margin: 10px 0;
-    font-size: 1.1em;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .hero-content {
-      flex-direction: column;
-    }
-    
-    .hero-text h1 {
-      font-size: 2.5em;
-    }
-    
-    .hero-text p {
-      font-size: 1.2em;
-    }
-  }
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Body */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eceff1;
-    color: #37474f;
-  }
-  
-  /* Header */
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: linear-gradient(90deg, #1565c0, #0288d1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .header-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .hospital-name {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .header-right .nav-btn {
-    margin-left: 15px;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-    color: #ffffff;
-    background-color: transparent;
-    border: 2px solid transparent;
-  }
-  
-  .header-right .nav-btn:hover {
-    background-color: #ffca28;
-    color: #37474f;
-    border-color: #ffab00;
-  }
-  
-  /* Hero Section (Home Page) */
-  .hero {
-    margin-top: 70px; /* to clear fixed header */
-    min-height: calc(100vh - 70px);
-    background: linear-gradient(135deg, #ffeb3b, #ff5722);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-  }
-  
-  .hero-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    width: 100%;
-  }
-  
-  .hero-text {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-  }
-  
-  .hero-text h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #1a237e;
-  }
-  
-  .hero-text p {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #4e342e;
-  }
-  
-  .hero-image {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
-  
-  /* Form & Account Sections */
-  .form-section,
-  .account-section {
-    background-color: #ffffff;
-    max-width: 500px;
-    margin: 100px auto 40px auto;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .form-section h2,
-  .account-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0d47a1;
-  }
-  
-  .form-section form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-section label {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #37474f;
-  }
-  
-  .form-section input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #90a4ae;
-    border-radius: 4px;
-  }
-  
-  .form-section button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #43a047;
-    color: #ffffff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .form-section button:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Account Info Text */
-  .account-section p {
-    margin: 10px 0;
-    font-size: 1.1em;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .hero-content {
-      flex-direction: column;
-    }
-    
-    .hero-text h1 {
-      font-size: 2.5em;
-    }
-    
-    .hero-text p {
-      font-size: 1.2em;
-    }
-  }
-/* ===== About Page Additional Styles ===== */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  background-color: #dae5e9;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5%;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.hospital-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+     color: #1db713;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* Modern Glass-style Navigation */
+.header-right {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  text-decoration: none;
+  
+  
+  padding: 1px 14px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  color: #09090a;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  
+  letter-spacing: 0.5px;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:active {
+  transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 5%;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  color: #1a237e;
+  font-weight: 700;
+  position: relative;
+}
+
+.hero-text h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1a237e, #7986cb);
+  border-radius: 2px;
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #37474f;
+  line-height: 1.7;
+}
+
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.02);
+}
+
+/* Form & Account Sections */
+.form-section,
+.account-section {
+  background: #ffffff;
+  max-width: 550px;
+  margin: 120px auto 60px;
+  padding: 35px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-section:hover,
+.account-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.form-section h2,
+.account-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #346189;
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.form-section h2::after,
+.account-section h2::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e88e5, #64b5f6);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section label {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #455a64;
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+  border-color: #64b5f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.25);
+}
+
+.form-section button {
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-section button:hover {
+  background: linear-gradient(135deg, #388e3c, #4caf50);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.form-section button:active {
+  transform: translateY(0);
+}
+
+/* Account Info Text */
+.account-section p {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border-left: 4px solid #42a5f5;
+}
+
+.account-section p strong {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+/* About Page Styles */
 .about-hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background: linear-gradient(135deg, #ffcc80, #ffab91);
-    padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #dae5e9;
+  padding: 100px 5% 40px;
+  margin-top: 0;
+}
+
+.about-hero-image {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.about-hero-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about-hero-image img:hover {
+  transform: scale(1.03);
+}
+
+.about-hero-text {
+  flex: 1;
+  min-width: 300px;
+  padding: 30px;
+  color: #01579b;
+}
+
+.about-hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.about-hero-text p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.about-details {
+  background-color: #fff;
+  padding: 50px 40px;
+  margin: 30px auto;
+  max-width: 1100px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-details h2 {
+  color: #1565c0;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.about-details h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1565c0, #42a5f5);
+  border-radius: 2px;
+}
+
+.about-details p,
+.about-details ul {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #455a64;
+  line-height: 1.7;
+}
+
+.about-details ul {
+  list-style-type: none;
+  margin-left: 10px;
+}
+
+.about-details ul li {
+  padding: 8px 0 8px 30px;
+  position: relative;
+}
+
+.about-details ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #43a047;
+  font-weight: bold;
+}
+
+.team-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.team-member {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  width: 220px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #f5f5f5, #e0f7fa);
+}
+
+.team-member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.team-member:hover img {
+  transform: scale(1.1);
+  border-color: #bbdefb;
+}
+
+.team-member h3 {
+  color: #1565c0;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.team-member p {
+  color: #546e7a;
+  font-size: 0.95rem;
+}
+
+/* Contact Page Styles */
+.contact-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #dae5e9;
+  padding: 100px 5% 40px;
+  margin-top: 0;
+}
+
+.contact-hero-image {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.contact-hero-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-hero-text {
+  flex: 1;
+  min-width: 300px;
+  padding: 30px;
+  color: #01579b;
+}
+
+.contact-hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.contact-hero-text p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.contact-details {
+  background-color: #fff;
+  padding: 50px 40px;
+  margin: 30px auto;
+  max-width: 1100px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  color: #455a64;
+  font-size: 1.1rem;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info h2 {
+  color: #0d47a1;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.contact-info h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0d47a1, #2196f3);
+  border-radius: 2px;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.contact-info p strong {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+.contact-form-container {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+}
+
+.contact-form-container h2 {
+  color: #0d47a1;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.contact-form-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0d47a1, #2196f3);
+  border-radius: 2px;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-container form label {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #455a64;
+  font-size: 1.05rem;
+}
+
+.contact-form-container form input,
+.contact-form-container form textarea {
+  padding: 12px 15px;
+  margin-top: 5px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.contact-form-container form input:focus,
+.contact-form-container form textarea:focus {
+  border-color: #64b5f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.25);
+}
+
+.contact-form-container form button {
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-container form button:hover {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Hospital Details Page */
+.hospital-details {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+.hospital-details .container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hospital-details h2 {
+  color: #1565c0;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.hospital-details h2::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1565c0, #42a5f5);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.hospital-info p {
+  font-size: 1.2rem;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 0;
+  transition: all 0.3s ease;
+}
+
+.hospital-info p:hover {
+  background-color: #f5f9ff;
+  border-left: 4px solid #2196f3;
+  padding-left: 20px;
+}
+
+.hospital-info p:last-child {
+  border-bottom: none;
+}
+
+.hospital-info p strong {
+  color: #1565c0;
+  display: inline-block;
+  width: 150px;
+}
+
+.hospital-info p a {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.hospital-info p a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+/* Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1010;
+  backdrop-filter: blur(5px);
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: popupFadeIn 0.3s ease-out;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  .about-hero-image {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .about-hero-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-  .about-hero-text {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    color: #3e2723;
-  }
-  .about-hero-text h1 {
-    font-size: 2.8em;
-    margin-bottom: 10px;
-  }
-  .about-hero-text p {
-    font-size: 1.2em;
-  }
-  .about-details {
-    background-color: #fff;
-    padding: 40px 20px;
-    margin: 20px auto;
-    max-width: 1000px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  .about-details h2 {
-    color: #1a237e;
-    margin-bottom: 10px;
-  }
-  .about-details p,
-  .about-details ul {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-    color: #424242;
-  }
-  .about-details ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-  .team-profiles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .team-member {
-    background: #e0f7fa;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 250px;
-  }
-  .team-member img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    object-fit: cover;
-  }
-  
-  /* ===== Contact Page Additional Styles ===== */
-  .contact-hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background: linear-gradient(135deg, #b3e5fc, #81d4fa);
-    padding: 40px 20px;
-  }
-  .contact-hero-image {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-  }
-  .contact-hero-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-  .contact-hero-text {
-    flex: 1;
-    min-width: 300px;
-    padding: 20px;
-    color: #01579b;
-  }
-  .contact-hero-text h1 {
-    font-size: 2.8em;
-    margin-bottom: 10px;
-  }
-  .contact-hero-text p {
-    font-size: 1.2em;
-  }
-  .contact-details {
-    background-color: #fff;
-    padding: 40px 20px;
-    margin: 20px auto;
-    max-width: 1000px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-  }
-  .contact-info {
-    flex: 1;
-    min-width: 300px;
-    color: #37474f;
-    font-size: 1.1em;
-  }
-  .contact-info h2 {
-    color: #0d47a1;
-    margin-bottom: 10px;
-  }
-  .contact-form-container {
-    flex: 1;
-    min-width: 300px;
-  }
-  .contact-form-container h2 {
-    color: #0d47a1;
-    margin-bottom: 10px;
-  }
-  .contact-form-container form {
-    display: flex;
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+  color: #1565c0;
+  font-size: 1.8rem;
+}
+
+.popup-content ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.popup-content ul li {
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.popup-content ul li:hover {
+  background-color: #f5f9ff;
+  padding-left: 20px;
+}
+
+.popup-content ul li:last-child {
+  border-bottom: none;
+}
+
+.popup-content ul li strong {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #e53935;
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background-color: #ffebee;
+  transform: rotate(90deg);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+
+ background-color: black;
+  color: #fff;
+ 
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hospital Dashboard */
+.hospital-details-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 100px auto 40px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.beds {
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header {
     flex-direction: column;
-  }
-  .contact-form-container form label {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  .contact-form-container form input,
-  .contact-form-container form textarea {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #90a4ae;
-    border-radius: 4px;
-  }
-  .contact-form-container form button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #43a047;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  .contact-form-container form button:hover {
-    background-color: #388e3c;
+    padding: 15px;
   }
   
-  /* ===== Footer (if not already styled) ===== */
-  footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #0288d1;
-    color: #fff;
-    margin-top: 40px;
+  .header-left {
+    margin-bottom: 15px;
   }
-        
-  .hospital-details-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  
+  .header-right {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
+  
+  .nav-btn {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .hero-content,
+  .about-hero,
+  .contact-hero {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .hero-text h1,
+  .about-hero-text h1,
+  .contact-hero-text h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-text p,
+  .about-hero-text p,
+  .contact-hero-text p {
+    font-size: 1.1rem;
+  }
+  
+  .form-section,
+  .account-section,
+  .about-details,
+  .contact-details {
+    padding: 20px;
+    margin-top: 80px;
+  }
+  
+  .team-member {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .hospital-info p strong {
+    width: auto;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
   
