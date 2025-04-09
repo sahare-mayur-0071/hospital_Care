@@ -10,51 +10,39 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f9;
+      background: #dae5e9;
       overflow-y: auto;
       scroll-behavior: smooth;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background: linear-gradient(90deg, #1565c0, #0288d1);
-      color: white;
-    }
-
-    .hospital-name {
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-
-    .nav-btn {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: color 0.3s ease-in-out;
-    }
-
-    .nav-btn:hover {
-      color: #FFD700;
-    }
-
-    .hospital-list {
+  .info {
       text-align: center;
       padding: 40px 20px;
       margin-top: 80px;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1565c0;
-      color: white;
-      margin-top: 40px;
-    }
+ 
+  
+  .hospital-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hospital-box {
+ 
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+
   </style>
 </head>
 
@@ -78,13 +66,50 @@
     </div>
   </header>
 
-  <section class="hospital-list">
+  <section class="info">
     <h2>Welcome to Hospital Care</h2>
-    <p>Please use the navigation above to explore our services or register/sign in.</p>
+    <h4>We Helps to find Availablity of Hospitals and beds </h4>
   </section>
+  <div class="hospital-container">
+ </div>
+
 
   <footer>
+	   <p>Please use the navigation above to explore our services or register/sign in.</p>
     <p>&copy; 2025 Hospital Care. All rights reserved.</p>
   </footer>
+  
+  
+	   
+	   
+	 
+
+
+
+<script>
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let hospitals = users.filter(user => user.role === "hospital");
+
+  const container = document.querySelector(".hospital-container");
+
+  const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSeR7SV8bW-SLZvfXQBZACBdFouS4ygu2OXeFAh1t4LLMGWMtg/viewform?usp=pp_url&entry.1247766359=";
+
+  hospitals.forEach(hospital => {
+    const encodedName = encodeURIComponent(hospital.name); 
+    const enquiryLink = formBase + encodedName;
+
+    const div = document.createElement("div");
+    div.className = "hospital-box";
+    div.innerHTML = `
+      <h3>${hospital.name}</h3>
+      <h4>Available Beds</h4>
+      <p>ICU Beds: ${hospital.beds.icubeds}</p>
+      <p>Ventileted Beds: ${hospital.beds.ventiletedbeds}</p>
+      <p>Normal Beds: ${hospital.beds.normalbeds}</p>
+      <a href="${enquiryLink}" target="_blank">Enquiry</a>
+    `;
+    container.appendChild(div);
+  });
+</script>  
 </body>
 </html>
