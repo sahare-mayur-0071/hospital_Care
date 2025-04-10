@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hospital Dashboard</title>
  <link rel="stylesheet" href="styles.css" />
+ <style>
+ #formResponses{
+	 
+ display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.response-box{
+ 
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-width: 250px;
+  max-width: 300px;
+}
+ .but{
+ 
+  height:40px; 
+  width:30%; 
+  color:#346189; 
+  background-color:#ccdfed;
+  border-radius:10px;
+  font-weight: 700;
+  border:none}
+	 
+	 
+	 
+	 </style>
 </head>
 <body>
 	 <header>
@@ -31,34 +63,93 @@
 
   <form id="bedForm" >
     <label class="bedsAvailable">Available Beds:</label>
-    <input type="number"  class="beds" placeholder="ICU beds" required />
-    <input type="number"  class="beds" placeholder="Ventileted beds" required />
-    <input type="number" class="beds" placeholder="Normal beds" required />
+    <input type="number"  class="icubeds" placeholder="ICU beds" required />
+    <input type="number"  class="venbeds" placeholder="Ventileted beds" required />
+    <input type="number" class="norbeds" placeholder="Normal beds" required />
     <button type="submit">Update</button>
   </form>
 
   <div id="updateMessage"></div>
+  <div id="updatevalue"></div>
 </div>
+
+<h2> 	Appointment Requests:</h2>
+<section id="formResponses">
+  
+</section>
+
   <script>
-    const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (!loggedIn || loggedIn.role !== "hospital") {
-      window.location.href = "signin.html";
-    }
+  const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedIn || loggedIn.role !== "hospital") {
+    window.location.href = "signin.html";
+  }
 
-    document.getElementById("bedForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const beds = document.querySelector(".bedsAvailable").value;
+  document.getElementById("bedForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      loggedIn.beds = beds;
-      localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
+    const icu = document.querySelector(".icubeds").value;
+    const ven = document.querySelector(".venbeds").value;
+    const nor = document.querySelector(".norbeds").value;
 
-      let users = JSON.parse(localStorage.getItem("users")) || [];
-      users = users.map(u => u.email === loggedIn.email ? loggedIn : u);
-      localStorage.setItem("users", JSON.stringify(users));
+    loggedIn.beds = { icubeds: icu, ventiletedbeds: ven, normalbeds: nor };
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
 
-      document.getElementById("updateMessage").textContent = "Bed availability updated!";
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users = users.map(u => u.email === loggedIn.email ? loggedIn : u);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    document.getElementById("updateMessage").textContent = "Bed availability updated!";
+  });
+
+  const corsProxy = "https://api.allorigins.win/raw?url=";
+  const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLfphu1MZhA3sJPrpszcrANg5z_45MU7I3f3vME12gll0zGaFkcF2OfEaMOhhnV019JOY9GDE5Lw0t/pub?output=csv";
+
+  const hospital = JSON.parse(localStorage.getItem("loggedInUser"));
+  const hospitalName = hospital.name;
+
+  fetch(corsProxy + encodeURIComponent(sheetUrl))
+    .then(res => res.text())
+    .then(csvText => {
+      const rows = csvText.split("\n").map(row => row.split(","));
+      const headers = rows[0];
+      const data = rows.slice(1);
+
+      const filtered = data.filter(row => row[2]?.trim() === hospitalName); // column index 2 = hospital name
+
+      const container = document.getElementById("formResponses");
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p>No responses found.</p>`;
+        return;
+      }
+
+      filtered.forEach(row => {
+        const patientName = row[3];
+        const contact = row[4];
+        const illness = row[5];
+
+        const div = document.createElement("div");
+        div.className = "response-box";
+        div.innerHTML = `
+          <p><strong>Patient Name:</strong> ${patientName}</p>
+          <p><strong>Contact:</strong> ${contact}</p>
+          <p><strong>Illness:</strong> ${illness}</p>
+          <button class="but">Accept</button>
+        `;
+        container.appendChild(div);
+
+        div.querySelector(".but").addEventListener("click", () => {
+          div.remove();
+        });
+      });
+    })
+    .catch(err => {
+      console.error("Error fetching sheet:", err);
+      document.getElementById("formResponses").innerHTML = "Unable to load data.";
     });
-  </script>
+</script>
+
+
 </body>
 </html>
 
