@@ -83,8 +83,9 @@
   });
 
   
-  const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
- if (Array.isArray(registeredUsers)) {
+ const registeredUsers = JSON.parse(localStorage.getItem("registeredUser")) || [];
+
+if (Array.isArray(registeredUsers)) {
   registeredUsers.forEach(patient => {
     if (!users.find(u => u.email === patient.email)) {
       users.push(patient);
