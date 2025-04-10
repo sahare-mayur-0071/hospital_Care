@@ -84,10 +84,14 @@
 
   
   const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
-  if (registeredUser && !users.find(u => u.email === registeredUser.email)) {
-    registeredUser.role = "patient"; // Ensure the role is added
-    users.push(registeredUser);
-  }
+ if (Array.isArray(registeredUsers)) {
+  registeredUsers.forEach(patient => {
+    if (!users.find(u => u.email === patient.email)) {
+      users.push(patient);
+    }
+  });
+}
+
 
   
   localStorage.setItem("users", JSON.stringify(users));
