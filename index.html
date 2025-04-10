@@ -40,9 +40,117 @@
   text-align: center;
   min-width: 250px;
   max-width: 300px;
+  cursor:pointer;
+  
+}
+.hospital-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgb(0 0 0 / 15%);
+    background: linear-gradient(135deg, #f5f5f5, #e0f7fa);
+}
+.ambulance-request {
+    padding: 60px 0;
+    background-color: var(--gray-light);
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+.ambulance-request-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow:  0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+.ambulance-request-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.btn-danger {
+    background-color: red;
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #c62828;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-lg {
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+.form-group textarea {
+    min-height: 100px;
+}
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid gray;
+    border-radius:10px;
+    font-family: inherit;
 }
 
-
+  .btn-primary {
+    background-color:#1a73e8;
+    color: white;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.emergency-guidelines {
+    padding: 60px 0;
+}
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #346189;
+    position: relative;
+}
+.guidelines-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.guideline-card {
+    background-color: white;
+    border-radius:20px;
+    box-shadow:  0 2px 10px rgba(0, 0, 0, 0.1)	;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+.guideline-card:hover {
+    transform: translateY(-5px);
+}
+.fa-classic, .fa-regular, .fa-solid, .far, .fas {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+}
   </style>
 </head>
 
@@ -67,13 +175,123 @@
   </header>
 
   <section class="info">
-    <h2>Welcome to Hospital Care</h2>
+    <h2 style="color:#346189;">Welcome to Hospital Care</h2>
     <h4>We Helps to find Availablity of Hospitals and beds </h4>
   </section>
   <div class="hospital-container">
  </div>
 
 
+  
+   <section id="ambulance-request" class="ambulance-request">
+        <div class="container">
+            <h2 class="section-title">Request an Ambulance</h2>
+            <div class="ambulance-request-container">
+                <form id="ambulance-form" class="ambulance-request-form">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" required="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" required="">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="location">Current Location</label>
+                        <input type="text" id="location" placeholder="Enter street address, city, state" required="">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emergency-type">Emergency Type</label>
+                        <select id="emergency-type" required="">
+                            <option value="">Select emergency type</option>
+                            <option value="accident">Accident/Trauma</option>
+                            <option value="cardiac">Cardiac Emergency</option>
+                            <option value="breathing">Breathing Difficulty</option>
+                            <option value="stroke">Stroke Symptoms</option>
+                            <option value="labor">Labor/Childbirth</option>
+                            <option value="other">Other Medical Emergency</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patient-count">Number of Patients</label>
+                        <select id="patient-count" required="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4+">4 or more</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="additional-info">Additional Information</label>
+                        <textarea id="additional-info" placeholder="Describe the situation, symptoms, or any other relevant details"></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-danger btn-lg btn-block">Request Ambulance Now</button>
+                    </div>
+                </form>
+                
+                <div id="ambulance-response" style="display: none;" class="text-center mt-4">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color:#34a853;"></i>
+                    <h3 class="mt-3">Ambulance Request Sent!</h3>
+                    <p>An ambulance has been dispatched to your location. Please keep your phone nearby. Our team will contact you shortly.</p>
+                    <p>Emergency ID: <span id="emergency-id">EM-12345</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  <section class="emergency-guidelines">
+        <div class="container">
+            <h2 class="section-title">Emergency First Aid Guidelines</h2>
+            <div class="guidelines-container">
+                <div class="guideline-card">
+                    <h3 style="color:#346189;"> Cardiac Emergency</h3>
+                    <ul>
+                        <li>Call emergency services immediately (911)</li>
+                        <li>If trained, begin CPR if the person is unresponsive and not breathing normally</li>
+                        <li>Push hard and fast in the center of the chest at a rate of 100-120 compressions per minute</li>
+                        <li>If an AED is available, use it according to instructions</li>
+                        <li>Continue CPR until emergency services arrive</li>
+                    </ul>
+                </div>
+                
+                <div class="guideline-card">
+                    <h3 style="color:#346189;"> Stroke</h3>
+                    <ul>
+                        <li>Remember the acronym FAST:
+                            <ul>
+                                <li>Face: Ask the person to smile. Does one side of the face droop?</li>
+                                <li>Arms: Ask the person to raise both arms. Does one arm drift downward?</li>
+                                <li>Speech: Ask the person to repeat a simple phrase. Is speech slurred or strange?</li>
+                                <li>Time: If you observe any of these signs, call 911 immediately</li>
+                            </ul>
+                        </li>
+                        <li>Note the time when symptoms first appeared</li>
+                        <li>Do not give them medication, food, or drink</li>
+                    </ul>
+                </div>
+                
+                <div class="guideline-card">
+                    <h3 style="color:#346189;">Severe Bleeding</h3>
+                    <ul>
+                        <li>Apply direct pressure to the wound using a clean cloth or bandage</li>
+                        <li>If blood soaks through, add more material without removing the original cloth</li>
+                        <li>If possible, elevate the wounded area above the heart</li>
+                        <li>Apply pressure to the arterial pressure point if necessary</li>
+                        <li>Secure the dressing with a bandage when bleeding slows</li>
+                        <li>Seek immediate medical attention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
   <footer>
 	   <p>Please use the navigation above to explore our services or register/sign in.</p>
     <p>&copy; 2025 Hospital Care. All rights reserved.</p>
@@ -87,29 +305,70 @@
 
 
 <script>
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-  let hospitals = users.filter(user => user.role === "hospital");
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let hospitals = users.filter(user => user.role === "hospital");
 
-  const container = document.querySelector(".hospital-container");
+// Get patient info from localStorage
+const stored = JSON.parse(localStorage.getItem("loggedInUser"));
+const patientName = stored?.name || "";
+const contactNumber = stored?.mobile || "";
 
-  const formBase = "https://docs.google.com/forms/d/e/1FAIpQLSeR7SV8bW-SLZvfXQBZACBdFouS4ygu2OXeFAh1t4LLMGWMtg/viewform?usp=pp_url&entry.1247766359=";
+const container = document.querySelector(".hospital-container");
 
-  hospitals.forEach(hospital => {
-    const encodedName = encodeURIComponent(hospital.name); 
-    const enquiryLink = formBase + encodedName;
+// Now build the boxes for each hospital
+hospitals.forEach(hospital => {
+  const hospitalName = hospital.name;
 
-    const div = document.createElement("div");
-    div.className = "hospital-box";
-    div.innerHTML = `
-      <h3>${hospital.name}</h3>
-      <h4>Available Beds</h4>
-      <p>ICU Beds: ${hospital.beds.icubeds}</p>
-      <p>Ventileted Beds: ${hospital.beds.ventiletedbeds}</p>
-      <p>Normal Beds: ${hospital.beds.normalbeds}</p>
-      <a href="${enquiryLink}" target="_blank">Enquiry</a>
-    `;
-    container.appendChild(div);
-  });
-</script>  
+  // Insert patient and hospital data into the form link
+  const formBase = `https://docs.google.com/forms/d/e/1FAIpQLSfGUoGSNnaR69wQRLhqoIiMH4IAo1vLr6RDXVa_NFnGqConqw/viewform?usp=pp_url&entry.1290492744=${encodeURIComponent(hospitalName)}&entry.2051076639=${encodeURIComponent(patientName)}&entry.1834542820=${encodeURIComponent(contactNumber)}`;
+
+  const div = document.createElement("div");
+  div.className = "hospital-box";
+  div.innerHTML = `
+    <h3>${hospital.name}</h3>
+    <h4>Available Beds</h4>
+    <p>ICU Beds: ${hospital.beds?.icubeds ?? 0}</p>
+    <p>Ventileted Beds: ${hospital.beds?.ventiletedbeds ?? 0}</p>
+    <p>Normal Beds: ${hospital.beds?.normalbeds ?? 0}</p>
+    <a href="${formBase}" target="_blank">Book Appointment</a>
+  `;
+  container.appendChild(div);
+});
+
+   document.addEventListener('DOMContentLoaded', function() {
+            // Handle ambulance request form submission
+            const ambulanceForm = document.getElementById('ambulance-form');
+            const ambulanceResponse = document.getElementById('ambulance-response');
+            const emergencyId = document.getElementById('emergency-id');
+            
+            if (ambulanceForm) {
+                ambulanceForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real application, this would send the form data to a server
+                    // For demo purposes, we'll just show a success message
+                    
+                    // Generate a random emergency ID
+                    const randomId = 'EM-' + Math.floor(Math.random() * 90000 + 10000);
+                    emergencyId.textContent = randomId;
+                    
+                    // Hide the form and show the response
+                    ambulanceForm.style.display = 'none';
+                    ambulanceResponse.style.display = 'block';
+                    
+                    // Scroll to the response
+                    ambulanceResponse.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+
+</script>
+
+
+   
+   
+  
+  
+  
 </body>
 </html>
