@@ -66,11 +66,16 @@
     <input type="number"  class="icubeds" placeholder="ICU beds" required />
     <input type="number"  class="venbeds" placeholder="Ventileted beds" required />
     <input type="number" class="norbeds" placeholder="Normal beds" required />
+    <label class="Availabledoc">Available Doctor:/label>
+      <input type="stirng"  class="doctor" placeholder="available doctor" required />
     <button type="submit">Update</button>
   </form>
 
   <div id="updateMessage"></div>
   <div id="updatevalue"></div>
+
+ 
+
 </div>
 
 <h2> 	Appointment Requests:</h2>
@@ -84,12 +89,14 @@
     window.location.href = "signin.html";
   }
 
+  
   document.getElementById("bedForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const icu = document.querySelector(".icubeds").value;
     const ven = document.querySelector(".venbeds").value;
     const nor = document.querySelector(".norbeds").value;
+    const doctor = document.querySelector(".doctor").value;
 
     loggedIn.beds = { icubeds: icu, ventiletedbeds: ven, normalbeds: nor };
     localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
@@ -139,8 +146,27 @@
         container.appendChild(div);
 
         div.querySelector(".but").addEventListener("click", () => {
-          div.remove();
+          fetch("YOUR_WEB_APP_URL", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+              name: patientName,
+              hospital: hospitalName
+            })
+          })
+            .then(res => res.text())
+            .then(message => {
+              alert(message); // Optional: confirm it worked
+              div.remove();   // Remove from the dashboard
+            })
+            .catch(err => {
+              console.error("Failed to update status:", err);
+              alert("Error updating appointment status");
+            });
         });
+        
       });
     })
     .catch(err => {

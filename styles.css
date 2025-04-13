@@ -854,3 +854,16 @@ footer {
 .fadeIn {
   animation: fadeIn 0.5s ease-in;
 }
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.slideIn {
+  animation: slideIn 0.5s ease-in-out;
+}

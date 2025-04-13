@@ -366,7 +366,9 @@ hospitals.forEach(hospital => {
     <p>ICU Beds: ${hospital.beds?.icubeds ?? 0}</p>
     <p>Ventileted Beds: ${hospital.beds?.ventiletedbeds ?? 0}</p>
     <p>Normal Beds: ${hospital.beds?.normalbeds ?? 0}</p>
-   <button class="view-doctors  btn"    data-hospital="${hospitalName}">View Availabel Doctors</button>
+    
+    <button class="view-doctors  btn"    data-hospital="${hospitalName}">View Availabel Doctors</button>
+     
     <a href="${formBase}" target="_blank"> Appointment</a>
   
   `;
@@ -400,7 +402,9 @@ function showDoctorAvailability(hospitalName) {
             <h2>Doctor Availability at ${hospitalName}</h2>
             <ul>
                 ${hospital.doctors.map(doctor => `
-                    <li>${doctor.name} - ${doctor.specialization} (Duty: ${doctor.dutyTime})</li>
+               
+                    
+                    <li>${doctor.name} - ${doctor.specialization} ( ${doctor.dutyTime})</li>
                 `).join('')}
             </ul>
         </div>

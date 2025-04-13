@@ -8,7 +8,7 @@
   <style>
 	  .but{
   position:relative; 
-  left:30vh; 
+  left:15vh; 
   height:40px; 
   width:50%; 
   color:#346189; 
@@ -82,6 +82,66 @@
   }
 
   loadAccountFromLocalStorage();
+  function loadAppointments() {
+    const loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedIn || loggedIn.role !== "patient") return;
+  
+    const patientName = loggedIn.name.trim().toLowerCase();
+    const container = document.createElement("div");
+    container.innerHTML = `<h3>Your Appointments</h3>`;
+    const list = document.createElement("ul");
+  
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLfphu1MZhA3sJPrpszcrANg5z_45MU7I3f3vME12gll0zGaFkcF2OfEaMOhhnV019JOY9GDE5Lw0t/pub?output=csv"; // Replace with YOUR form's sheet CSV
+    const corsProxy = "https://api.allorigins.win/raw?url=";
+  
+    fetch(corsProxy + encodeURIComponent(sheetUrl))
+      .then(res => res.text())
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(row => row.split(","));
+        const headers = rows[0];
+        const data = rows.slice(1);
+  
+        const nameIndex = headers.findIndex(h => /name/i.test(h));
+        const statusIndex = headers.findIndex(h => /status/i.test(h)); // if your form has a status column
+        const illnessIndex = headers.findIndex(h => /illness|problem/i.test(h));
+        const dateIndex = headers.findIndex(h => /date/i.test(h));
+        const hospitalIndex = headers.findIndex(h => /hospital/i.test(h));
+  
+        const matches = data.filter(row =>
+          row[nameIndex]?.trim().toLowerCase() === patientName
+        );
+  
+        if (matches.length === 0) {
+          list.innerHTML = `<li>No appointments found.</li>`;
+        } else {
+          matches.forEach(row => {
+            const illness = row[illnessIndex] || "N/A";
+            const status = row[statusIndex] || "Pending";
+            const hospital = row[hospitalIndex] || "Unknown Hospital";
+            const date = row[dateIndex] || "Not specified";
+  
+            const item = document.createElement("li");
+            item.innerHTML = `
+              <strong>Hospital:</strong> ${hospital}<br/>
+              <strong>Date:</strong> ${date}<br/>
+              <strong>Illness:</strong> ${illness}<br/>
+              <strong>Status:</strong> <span style="color: ${status.toLowerCase() === 'accepted' ? 'green' : 'orange'}">${status}</span>
+              <hr/>
+            `;
+            list.appendChild(item);
+          });
+        }
+  
+        container.appendChild(list);
+        document.querySelector(".account-section").appendChild(container);
+      })
+      .catch(err => {
+        console.error("Error loading appointments:", err);
+      });
+  }
+  
+  loadAppointments();
+  
 </script>
 
 </body>
